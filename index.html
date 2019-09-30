@@ -1,0 +1,1968 @@
+<html>
+<head>
+<title>JS-Tracker</title>
+<link href='https://fonts.googleapis.com/css?family=Lato:400' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+<style>
+/* general ***************************************************************/
+a {
+	text-decoration:none;
+	color:inherit;
+}
+
+body {
+	margin:0;
+	padding:0;
+}
+
+* {
+	font-family: 'Roboto',sans-serif;
+}
+
+.todo {
+	background-color: #222222;
+}
+
+.contenido {
+	width:900px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:30px;
+	margin-bottom:20px;
+	/*background-color:#FCFCFC;*/
+	background-color:rgba(240,240,240,0.9);
+	padding-top:14px;
+	padding-left:75px;
+	padding-right:75px;
+	padding-bottom:30px;
+	min-height:700px;
+}
+
+.parteGeneral {
+	display: inline-block;
+	width: 630px;
+	padding:10px;
+	margin-right:10px;
+	min-height:600px;
+	vertical-align:top;
+	border: 0.5px solid white; /*antes DDDDDD*/
+}
+
+.columnaDerecha {
+	display: inline-block;
+	width:200px;
+	padding:10px;
+	min-height:600px;
+	vertical-align:top;
+	border: 0.5px solid white;
+}
+
+.tituloParte {
+	font-size:22px;
+	font-weight:bold;
+	margin-bottom:5px;
+}
+
+.boton1 {
+	background-color: lightsteelblue;
+	padding: 1px;
+	box-shadow: 2px 2px 2px grey;
+	text-align: center;
+	font-size:16px;
+	border-radius:4px;
+	cursor:pointer;
+}
+
+.boton1:hover {
+	background-color:lightblue;
+}
+
+.imgBoton {
+	width:30px;
+	height:30px;
+	margin-right:2px;
+}
+
+#infoUsuario {
+	background-color:#F7E668;
+	padding:10px;
+	margin-left:120px;
+	margin-right:10px;
+	display:inline-block;
+}
+
+#bCerrarSesion {
+	background-color:#F7E668;
+	padding:3px;
+	display:inline-block;
+}
+#bCerrarSesion {
+	
+}
+
+/* menú ******************************************************************/
+
+#barraMenu {
+	position:fixed;
+	top:0;
+	left:0;
+	height:30px;
+	padding-right:10px;
+	padding-top:2px;
+	padding-bottom:5px;
+	background-color:slategrey;
+	width:100%;
+	padding-left:220px;
+	z-index:1;
+}
+
+#nombreEmpresa {
+	font-family: 'Lato', sans-serif;
+	font-size:30px;
+	display: inline-block;
+}
+
+#logoEmpresa {
+	margin-right:5px;
+	width:30px;
+	height:30px;
+	display: inline-block;
+}
+
+#pie {
+	width:100%;
+	background-color: slategrey;
+	text-align:center;
+	padding:2px;
+	height:20px;
+	position:fixed;
+	bottom:0px;
+}
+
+/* TRACKER *******************************************************************************/
+
+#contTracker {
+	
+}
+
+.numLinea {
+	display: inline-block;
+	padding:2px;
+	height:8px;
+	width:15px;
+	border:1px solid black;
+	color: yellow;
+	background-color: grey;
+	font-size:8px;
+}
+
+.lineaTracker {
+	
+}
+
+.lineaColumna {
+	display:inline-block;
+}
+
+.casillaTracker {
+	font-family: 'Courier New';
+	font-weight:bold;
+	font-size:12px;
+	padding:2px;
+	border: 1px solid grey;
+	background-color: #222222;
+	text-align:left;
+	display:inline-block;
+	height:16px;
+	
+}
+
+.notaTracker {
+	color: yellow;
+	width:42px;
+}
+
+.insTracker {
+	color: lightsteelblue;
+	width:24px;
+}
+
+.volTracker {
+	color: lightpink;
+	width:24px;
+}
+
+.efectoTracker {
+	color: yellowgreen;
+	width:30px;
+}
+
+.cabeceraColumnaTracker {
+	vertical-align:top;
+	width: 118px;
+	display:inline-block;
+	padding-top:2px;
+	padding-bottom:2px;
+	font-size:10px;
+	text-align:center;
+	background-color: grey;
+	color: yellow;
+	border: 1px solid black;
+	height:10px;
+	cursor:pointer;
+}
+
+#cabeceraPista0 {
+	margin-left:21px;
+}
+#controlesTracker {
+	margin-bottom:10px;
+}
+
+.casillaLetra {
+	display: inline-block;
+	height:8px;
+	padding:0px;
+	font-size:10px;
+	text-align:center;
+	color:yellow;
+	background-color:grey;
+	border:1px solid black;
+	padding-top:0px;
+	padding-bottom:4px;
+	vertical-align:top;
+}
+
+.cl0 {
+	width:40px;
+}
+
+.cl1 {
+	width:22px;
+}
+.cl2 {
+	width:22px;
+}
+.cl3 {
+	width:28px;
+}
+#contLetras {
+	margin-left:21px;
+}
+#copiaEstructura {
+	margin-left:140px;
+	font-size:13px;
+}
+.ordenTocado {
+	background-color:black;
+	color:white;
+}
+
+#controlCopiar {
+	margin-bottom:10px;
+}
+
+/* ********************************/
+
+#listaInstrucciones {
+	list-style-type: none;
+}
+
+#listaInstrucciones li {
+	border:1px solid white;
+	padding:10px;
+	width:550px;
+	text-align: justify;
+	display:block;
+	margin-bottom:15px;
+}
+</style>
+<script>
+/* VARIABLES GLOBALES **************************************************/
+var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+var is_firefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+var context = new AudioContext();
+var timeouts = [];
+var patrones = [];
+var numeroPatron = 0;
+var sonarPista = [true,true,true,true,true];
+var portapapeles = [[]];
+var patronesAnteriores = [];
+var instrumentos = [];
+var osciladoresContinuos = [];
+var ruidos = [];
+//no usadas
+REFRESH_RATE = 30;
+VOLUME = 0.5;
+var destination;
+var carrier, modulator, lspectrum, rspectrum, lwaveform, rwaveform;
+var reproduccionContinua = true;
+
+//notas
+var notas = [
+{'frecm':36,'frech':65.4064,'nombre':'DO','octava':2},
+{'frecm':37,'frech':69.2957,'nombre':'DO#','octava':2},
+{'frecm':38,'frech':73.4162,'nombre':'RE','octava':2},
+{'frecm':39,'frech':77.7817,'nombre':'RE#','octava':2},
+{'frecm':40,'frech':82.4069,'nombre':'MI','octava':2},
+{'frecm':41,'frech':87.3071,'nombre':'FA','octava':2},
+{'frecm':42,'frech':92.4986,'nombre':'FA#','octava':2},
+{'frecm':43,'frech':97.9989,'nombre':'SOL','octava':2},
+{'frecm':44,'frech':103.826,'nombre':'SOL#','octava':2},
+{'frecm':45,'frech':110.000,'nombre':'LA','octava':2},
+{'frecm':46,'frech':116.561,'nombre':'LA#','octava':2},
+{'frecm':47,'frech':123.471,'nombre':'SI','octava':2},
+{'frecm':48,'frech':130.813,'nombre':'DO','octava':3},
+{'frecm':49,'frech':138.591,'nombre':'DO#','octava':3},
+{'frecm':50,'frech':146.832,'nombre':'RE','octava':3},
+{'frecm':51,'frech':155.563,'nombre':'RE#','octava':3},
+{'frecm':52,'frech':164.814,'nombre':'MI','octava':3},
+{'frecm':53,'frech':174.614,'nombre':'FA','octava':3},
+{'frecm':54,'frech':184.997,'nombre':'FA#','octava':3},
+{'frecm':55,'frech':195.998,'nombre':'SOL','octava':3},
+{'frecm':56,'frech':207.652,'nombre':'SOL#','octava':3},
+{'frecm':57,'frech':220.000,'nombre':'LA','octava':3},
+{'frecm':58,'frech':233.082,'nombre':'LA#','octava':3},
+{'frecm':59,'frech':246.942,'nombre':'SI','octava':3},
+{'frecm':60,'frech':261.626,'nombre':'DO','octava':4},
+{'frecm':61,'frech':277.183,'nombre':'DO#','octava':4},
+{'frecm':62,'frech':293.665,'nombre':'RE','octava':4},
+{'frecm':63,'frech':311.127,'nombre':'RE#','octava':4},
+{'frecm':64,'frech':329.628,'nombre':'MI','octava':4},
+{'frecm':65,'frech':349.228,'nombre':'FA','octava':4},
+{'frecm':66,'frech':369.994,'nombre':'FA#','octava':4},
+{'frecm':67,'frech':391.995,'nombre':'SOL','octava':4},
+{'frecm':68,'frech':415.305,'nombre':'SOL#','octava':4},
+{'frecm':69,'frech':440.000,'nombre':'LA','octava':4},
+{'frecm':70,'frech':466.164,'nombre':'LA#','octava':4},
+{'frecm':71,'frech':493.883,'nombre':'SI','octava':4},
+{'frecm':72,'frech':523.251,'nombre':'DO','octava':5},
+{'frecm':73,'frech':554.365,'nombre':'DO#','octava':5},
+{'frecm':74,'frech':587.330,'nombre':'RE','octava':5},
+{'frecm':75,'frech':622.254,'nombre':'RE#','octava':5},
+{'frecm':76,'frech':659.255,'nombre':'MI','octava':5},
+{'frecm':77,'frech':698.255,'nombre':'FA','octava':5},
+{'frecm':78,'frech':739.989,'nombre':'FA#','octava':5},
+{'frecm':79,'frech':783.991,'nombre':'SOL','octava':5},
+{'frecm':80,'frech':830.609,'nombre':'SOL#','octava':5},
+{'frecm':81,'frech':880.000,'nombre':'LA','octava':5},
+{'frecm':82,'frech':932.328,'nombre':'LA#','octava':5},
+{'frecm':83,'frech':987.767,'nombre':'SI','octava':5},
+{'frecm':84,'frech':1046.50,'nombre':'DO','octava':6},
+{'frecm':85,'frech':1108.73,'nombre':'DO#','octava':6},
+{'frecm':86,'frech':1174.66,'nombre':'RE','octava':6},
+{'frecm':87,'frech':1244.51,'nombre':'RE#','octava':6},
+{'frecm':88,'frech':1318.51,'nombre':'MI','octava':6},
+{'frecm':89,'frech':1396.91,'nombre':'FA','octava':6},
+{'frecm':90,'frech':1479.98,'nombre':'FA#','octava':6},
+{'frecm':91,'frech':1567.98,'nombre':'SOL','octava':6},
+{'frecm':92,'frech':1661.22,'nombre':'SOL#','octava':6},
+{'frecm':93,'frech':1760.00,'nombre':'LA','octava':6},
+{'frecm':94,'frech':1864.66,'nombre':'LA#','octava':6},
+{'frecm':95,'frech':1975.53,'nombre':'SI','octava':6},
+{'frecm':96,'frech':2093.0,'nombre':'DO','octava':7},
+{'frecm':97,'frech':2217.5,'nombre':'DO#','octava':7},
+{'frecm':98,'frech':2349.3,'nombre':'RE','octava':7},
+{'frecm':99,'frech':2489.0,'nombre':'RE#','octava':7},
+{'frecm':100,'frech':2637.0,'nombre':'MI','octava':7}
+];
+
+//función que rellena las casillas del tracker vacías
+function rellenarTracker() {
+	var tracker="";
+	var letras = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T'];
+	for (i=0; i<5; i++) {
+		tracker+= "<div class='cabeceraColumnaTracker' id='cabeceraPista" + i + "' onclick='cambiarPista(" + i + ")'>Pista " + (i+1) + "</div>";
+	}
+	tracker+= "</div>";
+	tracker+="<div id='contLetras'>";
+	for (i=0; i<5; i++) {
+		for(j=0;j<4;j++) {
+			tracker+="<div class='casillaLetra cl" + j+ "'>"+ letras[(i*4)+j] + "</div>";
+		}
+	}
+	tracker+="</div>";
+	for (i=0; i<32; i++) {
+		tracker += "<div class='lineaTracker' id='linea" + i + "'>";
+		tracker += "<div class='numLinea' id='numLinea" + i + "'>" + (i+1) + "</div>";
+		for (j=0; j<5; j++) {
+			tracker += "<div class='lineaColumna' id='linea" + i + "col" + j + "'>";
+			tracker += "<input type='text' class='casillaTracker notaTracker' id='casillaTracker" + i + "col" + j + "num0' onkeydown='despTracker(event," + i + "," + j + "," + 0 + ")' onkeyup='ponerNota(event," + i + "," + j + ")'/>";
+			tracker += "<input type='text' class='casillaTracker insTracker' id='casillaTracker" + i + "col" + j + "num1' onkeydown='despTracker(event," + i + "," + j +"," + 1 + ")'/>";
+			tracker += "<input type='text' class='casillaTracker volTracker' id='casillaTracker" + i + "col" + j + "num2' onkeydown='despTracker(event," + i + "," + j + "," + 2 + ")'/>";
+			tracker += "<input type='text' class='casillaTracker efectoTracker' id='casillaTracker" + i + "col" + j + "num3' onkeydown='despTracker(event," + i + "," + j + "," + 3 + ")'/>";
+			tracker += "</div>";
+		}
+		tracker += "</div>";
+	}
+	
+	document.getElementById("contTracker").innerHTML = tracker;
+	activarTodasLasPistas();
+	
+	//añade varios eventos a resto de botones de la página
+	if (patrones.length==0) {
+		document.getElementById("bPlay").addEventListener("click", function(event){
+			reproducirPatronEscrito(event, true);
+		});
+		document.getElementById("bStop").addEventListener("click", function(event){
+			parar(event);
+		});
+		document.getElementById("bPlayCancion").addEventListener("click", function(event){
+			reproducirCancion(event);
+		});
+		document.getElementById("bStopCancion").addEventListener("click", function(event){
+			parar(event);
+		});	
+		document.getElementById("bClonar").addEventListener("click", function(event){
+			clonarPatron(event);
+		});		
+		document.getElementById("nPatron").addEventListener("change", function(event){
+			actualizarPatron(document.getElementById("nPatron").value);
+		});
+		document.getElementById("nPatron").addEventListener("keydown", function(event){
+			guardarPatron(event, document.getElementById("nPatron").value);
+		});
+		document.getElementById("tOrden").addEventListener("keydown", function(event){
+			guardarPatron(event, document.getElementById("nPatron").value);
+		});
+		document.getElementById("tNombreCancion").addEventListener("keydown", function(event){
+			guardarPatron(event, document.getElementById("nPatron").value);
+		});
+		document.getElementById("nVelocidad").addEventListener("keydown", function(event){
+			guardarPatron(event, document.getElementById("nPatron").value);
+		});
+		document.getElementById("bCopiar").addEventListener("keydown", function(event){
+			guardarPatron(event, document.getElementById("nPatron").value);
+		});
+		document.getElementById("bCortar").addEventListener("keydown", function(event){
+			guardarPatron(event, document.getElementById("nPatron").value);
+		});
+		document.getElementById("bNuevo").addEventListener("click", function(event){
+			guardarPatron(event, document.getElementById("nPatron").value);
+			nuevoPatron(event);
+		});
+		aniadirEventosCasillas();
+		document.getElementById("hCancion").value= undefined;
+	}
+	
+	//mirar si hay canción preparada para cargar y cargarla
+	if (document.getElementById("codigo_").innerHTML!="") {
+		var patronesCancion = JSON.parse(document.getElementById("codigo_").innerHTML);
+		patrones = patronesCancion;
+		var instrumentosCancion = JSON.parse(document.getElementById("instrumentos_").innerHTML);
+		instrumentos = instrumentosCancion;
+		rellenarPrimerInstrumento();
+		//poner el número del primer patrón en el input y el primer patrón en las casillas
+		document.getElementById("nPatron").value = patrones[0][0];
+		rellenarPatron(patrones[0][1]);
+		copiarEstructura();
+		document.getElementById("codigo_").innerHTML = "";
+		document.getElementById("instrumentos_").innerHTML = "";
+		aniadirEventosCasillas();
+	}
+	
+}
+
+function aniadirEventosCasillas() {
+	for (i=0; i<32; i++) {
+		for (j=0; j<5; j++) {
+			for (k=0; k<4; k++) {
+				document.getElementById("casillaTracker" + i + "col" + j + "num" + k).addEventListener("keyup", function(event){
+					guardarPatron(event, document.getElementById("nPatron").value);
+				});
+			}
+		}
+	}
+}
+
+/* FUNCIONES QUE CONTROLAN LA GENERACION DE SONIDO */
+
+function reproducirLineaEscrita(event,tiempoRetrasoMarcadoPorAnterior,tiempoRetrasoActual, i) {
+				var efectos0 = document.getElementById("casillaTracker" + i + "col0num3").value.toUpperCase();
+				var efectos1 = document.getElementById("casillaTracker" + i + "col1num3").value.toUpperCase();
+				var efectos2 = document.getElementById("casillaTracker" + i + "col2num3").value.toUpperCase();
+				var efectos3 = document.getElementById("casillaTracker" + i + "col3num3").value.toUpperCase();
+				var efectos4 = document.getElementById("casillaTracker" + i + "col4num3").value.toUpperCase();
+
+				if (sonarPista[0] && efectos0!="Z") {eval("timeouts.push(setTimeout(function(){tocarLineaPista(" + i + ",0);}," + (tiempoRetrasoMarcadoPorAnterior) + "));");}
+				if (sonarPista[1] && efectos1!="Z") {eval("timeouts.push(setTimeout(function(){tocarLineaPista(" + i + ",1);}," + (tiempoRetrasoMarcadoPorAnterior) + "));");}
+				if (sonarPista[2] && efectos2!="Z") {eval("timeouts.push(setTimeout(function(){tocarLineaPista(" + i + ",2);}," + (tiempoRetrasoMarcadoPorAnterior) + "));");}
+				if (sonarPista[3] && efectos3!="Z") {eval("timeouts.push(setTimeout(function(){tocarLineaPista(" + i + ",3);}," + (tiempoRetrasoMarcadoPorAnterior) + "));");}
+				if (sonarPista[4] && efectos4!="Z") {eval("timeouts.push(setTimeout(function(){tocarLineaPista(" + i + ",4);}," + (tiempoRetrasoMarcadoPorAnterior) + "));");}
+				eval("timeouts.push(setTimeout(function(){destacarLinea(" + i + ");}," + (tiempoRetrasoMarcadoPorAnterior) + "));");
+				if (i>0){eval("timeouts.push(setTimeout(function(){normalizarLinea(" + (i-1) + ");}," + (tiempoRetrasoMarcadoPorAnterior) + "));");}
+}
+
+function reproducirPatronEscrito(event, anularUltimo) {
+		//comprobar si hay salto y donde está
+		var lineaSalto = 32;
+		for (var lin=0;lin<32;lin++) {
+			for (var pis=0; pis<5; pis++) {
+				var efectos = document.getElementById("casillaTracker" + lin + "col" + pis + "num3").value.toUpperCase();
+				if (efectos=="S" && lineaSalto==32 && lin!=0) {lineaSalto=lin;break;}
+			}
+		}
+		var tiemposPatron = calcularDuracionPatronEscrito();
+		for (var lin=0;lin<lineaSalto;lin++) {
+			reproducirLineaEscrita(event, tiemposPatron[0][lin], tiemposPatron[0][lin+1], lin);
+		}
+		if (anularUltimo) {timeouts.push(setTimeout(function(){normalizarLinea(lineaSalto-1);},tiemposPatron[1]))};
+}
+
+function reproducirCancion(event) {
+	document.getElementById("bPlayCancion").disabled=true;
+	var tiempos = calcularDuracionCancion();
+	var ordenCadena = document.getElementById("tOrden").value;
+	var hayParentesis = false;
+	if (ordenCadena.indexOf("(")!=-1 && ordenCadena.indexOf(")")!=-1) {
+		hayParentesis = true;
+		ordenCadena = ordenCadena.substring(ordenCadena.indexOf("(")+1, ordenCadena.indexOf(")"));
+	}
+	
+	if (validarOrden(ordenCadena)) {
+		var orden = ordenCadena.split(',');
+	
+			for (var i=0; i<orden.length; i++) {
+				for (var pat=0;pat<patrones.length;pat++) {
+					if (orden[i] == patrones[pat][0]) {
+						//alert(tiempos[i]);
+						eval("timeouts.push(setTimeout(function(){document.getElementById('nPatron').value=" + orden[i] + ";}," + tiempos[0][i] + "));");
+						eval("timeouts.push(setTimeout(function(){rellenarPatron(patrones[" + pat + "][1]);}," + tiempos[0][i] + "));");
+						eval("timeouts.push(setTimeout(function(){reproducirPatronEscrito(event, false);}," + tiempos[0][i] + "));"); //anterior: (i*tiempo*64)
+						eval('timeouts.push(setTimeout(function(){transformarOrdenCancion('+i+');},'+tiempos[0][i]+'))');					
+					}
+				}
+		}
+		var idUltimoPatron = orden[orden.length-1];
+		var ultimoPatron = patrones[patrones.length-1];
+		for (var pat=0;pat<patrones.length;pat++) {
+			if (patrones[pat][0]==idUltimoPatron) {
+				ultimoPatron = patrones[pat];
+				break;
+			}
+		}
+		var lineaSalto = 31;
+		for (var lin=0;lin<32;lin++) {
+			for (var pis=0;pis<5;pis++) {
+				var efectos = ultimoPatron[1][pis][lin][3].toUpperCase();
+				if (efectos=="S") {
+					if (lineaSalto==31) {lineaSalto = (lin-1);}
+					break;
+				}
+			}
+		}
+		timeouts.push(setTimeout(function(){normalizarLinea(lineaSalto);},tiempos[1]));
+		timeouts.push(setTimeout(function(){document.getElementById("bPlayCancion").disabled=false;},tiempos[1]));
+		timeouts.push(setTimeout(function(){copiarEstructura()},tiempos[1]));
+	}
+}
+
+function calcularDuracionLineaEscrita(linea) {
+	var tiempo = parseInt(document.getElementById("nVelocidad").value);
+	tiempo = Math.floor(15/tiempo*1000);
+	var factorRetraso = 0;
+	var tiempoMaximo = 0;
+	//comprobar efectos
+	for (var pis=0;pis<5;pis++) {
+		var efectos = document.getElementById("casillaTracker" + linea + "col" + pis + "num3").value.toUpperCase();
+		if (comprobarTiempo(efectos)) {
+					tiempoMaximo = -100000000000;
+					var menos = false;
+					if (efectos.length>2 && efectos.substring(2,3)=="-") {menos=true;}
+					if (efectos.substring(1,2)=="G") {
+						factorRetraso = tiempo;
+					}
+					else {
+						var factorRetrasoHex = efectos.substring(1,2);
+						var factorRetrasoDec = parseInt(factorRetrasoHex, 16);
+						factorRetraso = Math.floor(tiempo/16.0*factorRetrasoDec);
+					}
+					if (menos) {factorRetraso = parseInt(factorRetraso)-parseInt(tiempo);}
+					if (factorRetraso > tiempoMaximo) {
+						tiempoMaximo = factorRetraso;
+					}
+		}
+	}
+	return (tiempo+tiempoMaximo);
+}
+
+function calcularDuracionLineaPatron(lineapista) {
+	var tiempo = parseInt(document.getElementById("nVelocidad").value);
+	tiempo = Math.floor(15/tiempo*1000);
+	var factorRetraso = 0;
+	//comprobar efectos
+	
+		var efectos = lineapista[3].toUpperCase();
+		if (comprobarTiempo(efectos)) {
+					var menos = false;
+					if (efectos.length>2 && efectos.substring(2,3)=="-") {menos=true;}
+					if (efectos.substring(1,2)=="G") {
+						factorRetraso = tiempo;
+					}
+					else {
+						var factorRetrasoHex = efectos.substring(1,2);
+						var factorRetrasoDec = parseInt(factorRetrasoHex, 16);
+						factorRetraso = Math.floor(tiempo/16.0*factorRetrasoDec);
+					}
+					if (menos) {factorRetraso = parseInt(factorRetraso)-parseInt(tiempo);}
+		}
+	return (tiempo+factorRetraso);
+}
+
+function calcularDuracionPatronEscrito() {
+	var tiempoAcumulado = 0;
+	var tiempos = [0];
+	//comprobar si hay salto y donde está
+	var lineaSalto = 32;
+	for (var lin=0;lin<32;lin++) {
+		for (var pis=0; pis<5; pis++) {
+			var efectos = document.getElementById("casillaTracker" + lin + "col" + pis + "num3").value.toUpperCase();
+			if (efectos=="S" && lineaSalto==32) {lineaSalto=lin;break;}
+		}
+	}
+	
+	for (var lin=0;lin<lineaSalto;lin++) {
+		tiempos.push(tiempoAcumulado+calcularDuracionLineaEscrita(lin));
+		tiempoAcumulado += calcularDuracionLineaEscrita(lin);
+	}
+	var resp = [tiempos, tiempoAcumulado];
+	return resp;
+	
+}
+
+function calcularDuracionPatron(patron) {
+	var tiempoAcumulado = 0;
+	var tiempos = [0];
+	//comprobar si hay salto y donde está
+	var lineaSalto = 32;
+	for (var pis=0;pis<5;pis++) {
+		for (var lin=0; lin<32; lin++) {
+			var efectos = patron[pis][lin][3].toUpperCase();
+			if (efectos=="S" && lineaSalto==32) {lineaSalto=lin;break;}
+		}
+	}
+	
+	for (var lin=0; lin<lineaSalto; lin++) {
+		var tiempoMaximo = -100000000;
+		for (var pis=0;pis<5;pis++) {
+			var durac = calcularDuracionLineaPatron(patron[pis][lin]);
+			if (durac>tiempoMaximo) {
+				tiempoMaximo = durac;
+			}
+		}
+		tiempos.push(tiempoAcumulado+tiempoMaximo);
+		tiempoAcumulado += tiempoMaximo;
+	}
+	var resp = [tiempos, tiempoAcumulado];
+	return resp;
+}
+
+function calcularDuracionCancion() {
+	var tiempoAcumulado = 0;
+	var tiempos = [0];
+	var ordenCadena = document.getElementById("tOrden").value;
+	var hayParentesis = false;
+	if (ordenCadena.indexOf("(")!=-1 && ordenCadena.indexOf(")")!=-1) {
+		hayParentesis = true;
+		ordenCadena = ordenCadena.substring(ordenCadena.indexOf("(")+1, ordenCadena.indexOf(")"));
+	}
+	if (validarOrden(ordenCadena)) {
+		var orden = ordenCadena.split(',');
+		for (var ii=0; ii<orden.length; ii++) {
+			for (var pat=0;pat<patrones.length;pat++) {
+				if (orden[ii] == patrones[pat][0]) {
+					tiempos.push(tiempoAcumulado+calcularDuracionPatron(patrones[pat][1])[1]);
+					tiempoAcumulado+= calcularDuracionPatron(patrones[pat][1])[1];
+				}
+			}
+		}
+	var resp = [tiempos,tiempoAcumulado];
+	return resp;
+	}
+	return undefined;
+}
+
+function validarOrden(orden) {
+	var re = /^(\d+,?)+$/;
+	return re.test(orden);
+}
+
+//resaltar el patrón que está tocando
+function transformarOrdenCancion(n) {
+	copiarEstructura();
+	var ordenCancion = document.getElementById("copiaEstructura").innerHTML;
+	var ordenCancion2 = "";
+	var ordenArray = ordenCancion.split(",");
+	for (ii=0; ii<ordenArray.length; ii++) {
+		if (ii==n) {
+			ordenCancion2 += "<span class='ordenTocado'>" + ordenArray[ii] + "</span>";
+		}
+		else {
+			ordenCancion2 += ordenArray[ii];
+		}
+		if (ii<(ordenArray.length-1)) {ordenCancion2+=",";}
+	}
+	document.getElementById("copiaEstructura").innerHTML = ordenCancion2;
+}
+
+function tocarLineaPista(linea, pista) {
+	var lineaPistaSel =  document.getElementById("linea" + linea + "col" + pista);
+	var nota = lineaPistaSel.getElementsByClassName("notaTracker")[0].value.toUpperCase();
+	var frec = Number(encontrarFrecPorNombreNota(nota));
+	var instrumento = parseInt(lineaPistaSel.getElementsByClassName("insTracker")[0].value);	
+	//si el instrumento está vacío, buscar el siguiente instrumento que haya más arriba
+	if (lineaPistaSel.getElementsByClassName("insTracker")[0].value == "") {
+		for (i=linea-1; i>=0; i--) {
+			if (document.getElementById("casillaTracker" + i + "col" + pista + "num1").value != "") {
+				var instrumento = parseInt(document.getElementById("casillaTracker" + i + "col" + pista + "num1").value);
+				break;
+			}
+		}
+	}
+	var inst = buscarInstrumentoPorNum(instrumento);
+	if (frec && inst!=undefined && nota!="--") {
+			tocarInstrumento(frec,inst, linea, pista);
+	}
+	else if (lineaPistaSel.getElementsByClassName("notaTracker")[0].value=="--") {
+		tocarInstrumento(-1,inst,linea,pista);
+	}
+	else if (lineaPistaSel.getElementsByClassName("notaTracker")[0].value=="" && inst!=undefined && inst.esContinuo && lineaPistaSel.getElementsByClassName("volTracker")[0].value!="") {
+		for (var j=linea-1; j>=0; j--) {
+			var lin_ = document.getElementById("linea" + j + "col" + pista);
+			var nota_ = lin_.getElementsByClassName("notaTracker")[0].value.toUpperCase();
+			var frec_ = Number(encontrarFrecPorNombreNota(nota_));
+			if (frec_ && frec!=undefined) {
+				tocarInstrumento(frec_,inst,linea,pista);
+				break;
+			}
+		}
+	}
+}
+
+function tocarInstrumento(frec, inst, linea, pista) {  //WEB AUDIO API
+		if (frec!=-1) {
+		//mirar si se le ha pasado otro volumen
+		if (document.getElementById("casillaTracker"+linea+"col"+pista+"num2").value!="" && !isNaN(document.getElementById("casillaTracker" + linea + "col" + pista + "num2").value)) {
+			inst.vol = parseFloat(document.getElementById("casillaTracker" + linea + "col" + pista + "num2").value)/10;;
+		}
+
+		if (inst.tipo == 'ondaSonora') {
+			if (!inst.esContinuo) {
+				var efectos = document.getElementById("casillaTracker" + linea + "col" + pista + "num3").value.toUpperCase(); 
+				var efecto = comprobarEfectos(efectos);
+				//no hay efectos
+				if (efecto=="no") {
+					var gain = context.createGain(); 
+					var osc = context.createOscillator(); 
+					gain.connect(context.destination); 
+					gain.gain.setValueAtTime(0, context.currentTime);
+					gain.gain.linearRampToValueAtTime(inst.vol, context.currentTime + inst.attack / 1000);
+					gain.gain.linearRampToValueAtTime(0, context.currentTime + inst.release / 1000);
+					osc.frequency.value = frec;
+					osc.type = inst.onda;
+					osc.connect(gain); 
+					osc.start(0);
+					
+					timeouts.push(setTimeout(function() { 
+						osc.stop(0);
+						osc.disconnect(gain);
+						gain.disconnect(context.destination);
+					}, inst.release));
+				}
+				else if (efecto=="acorde") {
+				
+					var ac2Hex = efectos.substring(1,2);
+					var ac3Hex = efectos.substring(2,3);
+					var ac2 = parseInt(ac2Hex, 16);
+					var ac3 = parseInt(ac3Hex, 16);
+					var nota1 = buscarNotaPorFrech(frec);
+					var nota2 = buscarNotaPorFrecm(nota1.frecm + ac2);
+					var nota3 = buscarNotaPorFrecm(nota1.frecm + ac3);
+					
+					var gain = context.createGain(); 
+					var osc = context.createOscillator(); 
+					gain.connect(context.destination); 
+					gain.gain.setValueAtTime(0, context.currentTime);
+					gain.gain.linearRampToValueAtTime(inst.vol/3, context.currentTime + inst.attack / 1000);
+					gain.gain.linearRampToValueAtTime(0, context.currentTime + inst.release / 1000);
+					osc.frequency.value = frec;
+					osc.type = inst.onda;
+					osc.connect(gain); 
+					osc.start(0);
+					
+					if (nota2!=undefined) {
+						var gain2 = context.createGain(); 
+						var osc2 = context.createOscillator(); 
+						gain2.connect(context.destination); 
+						gain2.gain.setValueAtTime(0, context.currentTime);
+						gain2.gain.linearRampToValueAtTime(inst.vol/3, context.currentTime + inst.attack / 1000);
+						gain2.gain.linearRampToValueAtTime(0, context.currentTime + inst.release / 1000);
+						osc2.frequency.value = nota2.frech;
+						osc2.type = inst.onda;
+						osc2.connect(gain2); 
+						osc2.start(0);
+					}
+					
+					if (nota3!=undefined) {
+						var gain3 = context.createGain(); 
+						var osc3 = context.createOscillator(); 
+						gain3.connect(context.destination); 
+						gain3.gain.setValueAtTime(0, context.currentTime);
+						gain3.gain.linearRampToValueAtTime(inst.vol/3, context.currentTime + inst.attack / 1000);
+						gain3.gain.linearRampToValueAtTime(0, context.currentTime + inst.release / 1000);
+						osc3.frequency.value = nota3.frech;
+						osc3.type = inst.onda;
+						osc3.connect(gain3); 
+						osc3.start(0);
+					}
+					
+					timeouts.push(setTimeout(function() { 
+						osc.stop(0);
+						osc.disconnect(gain);
+						gain.disconnect(context.destination);
+						if (nota2!=undefined) {
+						osc2.stop(0);
+						osc2.disconnect(gain2);
+						gain2.disconnect(context.destination);
+						}
+						if (nota3!=undefined) {
+						osc3.stop(0);
+						osc3.disconnect(gain3);
+						gain3.disconnect(context.destination);
+						}
+						
+					}, inst.release));
+				}
+				else if (efecto=="portamento") {
+				
+					var menos = false;
+					if (efectos.length>2 && efectos.substring(2,3)=="-") {
+						menos = true;
+					}
+				
+					var ac2Hex = efectos.substring(1,2);				
+					var ac2 = parseInt(ac2Hex, 16);
+					var nota1 = buscarNotaPorFrech(frec);
+					if (menos) {var nota2 = buscarNotaPorFrecm(nota1.frecm - ac2)}
+					else {var nota2 = buscarNotaPorFrecm(nota1.frecm + ac2);};			
+					
+					var gain = context.createGain(); 
+					var osc = context.createOscillator(); 
+					gain.connect(context.destination); 
+					gain.gain.setValueAtTime(0, context.currentTime);
+					gain.gain.linearRampToValueAtTime(inst.vol, context.currentTime + inst.attack / 1000);
+					gain.gain.linearRampToValueAtTime(0, context.currentTime + inst.release / 1000);
+					osc.frequency.value = frec;
+					osc.type = inst.onda;
+					osc.connect(gain); 
+					osc.start(0);
+					
+						if (nota2!=undefined) {
+						timeouts.push(setTimeout(function() { 
+						osc.frequency.value = nota2.frech;
+						}, (inst.attack+inst.release)/10));
+						}
+					
+						timeouts.push(setTimeout(function() { 
+						osc.stop(0);
+						osc.disconnect(gain);
+						gain.disconnect(context.destination);
+						}, inst.release));
+				
+				}
+				
+			else if (efecto=="arpegio") {
+					
+					var ac2Hex = efectos.substring(1,2);
+					var ac3Hex = efectos.substring(2,3);
+					var ac2 = parseInt(ac2Hex, 16);
+					var ac3 = parseInt(ac2Hex, 16);
+					var nota1 = buscarNotaPorFrech(frec);
+					var nota2 = buscarNotaPorFrecm(nota1.frecm + ac2);
+					var nota3 = buscarNotaPorFrecm(nota1.frecm + ac3);
+					
+					var gain = context.createGain(); 
+					var osc = context.createOscillator(); 
+					gain.connect(context.destination); 
+					gain.gain.setValueAtTime(0, context.currentTime);
+					gain.gain.linearRampToValueAtTime(inst.vol, context.currentTime + inst.attack / 1000);
+					gain.gain.linearRampToValueAtTime(0, context.currentTime + inst.release / 1000);
+					osc.frequency.value = frec;
+					osc.type = inst.onda;
+					osc.connect(gain); 
+					osc.start(0);
+					
+						if (nota2!=undefined) {
+						timeouts.push(setTimeout(function() { 
+						osc.frequency.value = nota2.frech;
+						}, (inst.attack+inst.release)/3));
+						}
+						
+						if (nota3!=undefined) {
+						timeouts.push(setTimeout(function() { 
+						osc.frequency.value = nota3.frech;
+						}, ((inst.attack+inst.release)/3)*2));
+						}
+					
+						timeouts.push(setTimeout(function() { 
+						osc.stop(0);
+						osc.disconnect(gain);
+						gain.disconnect(context.destination);
+						}, inst.release));
+			}
+									
+			}
+			else {  //instrumentos continuos
+				var existeOscilador = false;
+				for (var j=0; j<osciladoresContinuos.length; j++) {
+					if (osciladoresContinuos[j].id == inst.numInst + "|" + pista) {
+						//mirar si cambian valores y actualizar					
+						existeOscilador = true;
+					}
+				}
+				if (existeOscilador) {	
+						if (document.getElementById("casillaTracker" + linea + "col" + pista + "num3").value.toUpperCase() == "B") {
+							var oscParar = buscarOscPorId(inst.numInst + "|" + pista);
+							if (oscParar!=undefined) {
+										oscParar.os.stop(0);
+										oscParar.os.disconnect(oscParar.ga);
+										oscParar.ga.disconnect(context.destination);
+							var nuevosOsciladoresContinuos = [];
+							for (var j=0;j<osciladoresContinuos.length;j++) {
+								if (osciladoresContinuos[j].id != oscParar.id) {
+									nuevosOsciladoresContinuos.push(osciladoresContinuos[j]);
+								}
+							}
+							osciladoresContinuos = nuevosOsciladoresContinuos;
+							var gainz = context.createGain(); 
+							var oscz = context.createOscillator(); 
+							var nuevoOsc = {'id':inst.numInst + "|" + pista, 'os':oscz, 'ga':gainz};
+							osciladoresContinuos.push(nuevoOsc);
+							var osc_ = buscarOscPorId(inst.numInst + "|" + pista);
+							osc_.ga.connect(context.destination);
+							osc_.ga.gain.value = inst.vol;
+							osc_.os.frequency.value = frec;
+							osc_.os.type = inst.onda;
+							osc_.os.connect(osc_.ga);
+							osc_.os.start(0);
+							
+							}
+						}
+						else {
+							var osc_ = buscarOscPorId(inst.numInst + "|" + pista);
+							osc_.ga.gain.setValueAtTime(inst.vol, context.currentTime);
+							osc_.os.frequency.value = frec;
+						}
+				}
+				else {
+						var gainz = context.createGain(); 
+						var oscz = context.createOscillator(); 
+						var nuevoOsc = {'id':inst.numInst + "|" + pista, 'os':oscz, 'ga':gainz};
+						osciladoresContinuos.push(nuevoOsc);
+						var osc_ = buscarOscPorId(inst.numInst + "|" + pista);
+						osc_.ga.connect(context.destination);
+						osc_.ga.gain.value = inst.vol;
+						osc_.os.frequency.value = frec;
+						osc_.os.type = inst.onda;
+						osc_.os.connect(osc_.ga);
+						osc_.os.start(0);
+				}
+			}
+		}
+		else if (inst.tipo == 'ruidoBlanco') {
+			var whiteNoise = context.createScriptProcessor(inst.bufferSize, 1, 1);
+			whiteNoise.onaudioprocess = function(e) {
+				var output = e.outputBuffer.getChannelData(0);
+				for (var i = 0; i < inst.bufferSize; i++) {
+					output[i] = Math.random() * 2 - 1;
+				}
+			}
+			var gain = context.createGain();
+			gain.gain.value = inst.vol;
+			whiteNoise.connect(gain);
+			gain.connect(context.destination);
+			var tiempoDesconexion = inst.duracion;
+			var tiempo = parseInt(document.getElementById("nVelocidad").value);
+			tiempo = Math.floor(15/tiempo*1000);
+			var tiempoOrig = Math.floor(15/tiempo*1000);
+			var efectos = document.getElementById("casillaTracker" + linea + "col" + pista + "num3").value.toUpperCase();
+			if (comprobarTiempo(efectos)) {
+				var factorHex = efectos.substring(1,2);
+				var factorDec = parseInt(factorHex, 16);
+				tiempo = tiempo + factorDec;
+				if (efectos.length > 2 && efectos.substring(2,3)=="-") {tiempo = tiempo - tiempoOrig;}
+			}
+			if (inst.duracion >= tiempo) {tiempoDesconexion = tiempo-10;}
+			timeouts.push(setTimeout(function() {
+				whiteNoise.disconnect(gain);
+				gain.disconnect(context.destination);
+			}, tiempoDesconexion));
+		}
+	}
+	else {
+		oscParar = buscarOscPorId(inst.numInst + "|" + pista);
+		if (oscParar!=undefined) {
+					oscParar.os.stop(0);
+					oscParar.os.disconnect(oscParar.ga);
+					oscParar.ga.disconnect(context.destination);
+		var nuevosOsciladoresContinuos = [];
+		for (var j=0;j<osciladoresContinuos.length;j++) {
+			if (osciladoresContinuos[j].id != oscParar.id) {
+				nuevosOsciladoresContinuos.push(osciladoresContinuos[j]);
+			}
+		}
+		osciladoresContinuos = nuevosOsciladoresContinuos;
+		}
+	}
+}
+
+function encontrarFrecPorNombreNota(nota) {
+	for (i=0; i<notas.length; i++) {
+		if (nota==notas[i].nombre + notas[i].octava) {
+			return notas[i].frech;
+		}
+	}
+	return undefined;
+}
+
+function parar(event) {
+	reproduccionContinua = false;
+	document.getElementById("bPlay").disabled = false;
+	document.getElementById("bPlayCancion").disabled = false;
+	for (var i = 0; i < timeouts.length; i++) {
+		clearTimeout(timeouts[i]);
+	}
+	timeouts = [];
+	for (var j=0; j<osciladoresContinuos.length; j++) {
+		osciladoresContinuos[j].os.stop(0);
+		osciladoresContinuos[j].os.disconnect(osciladoresContinuos[j].ga);
+		osciladoresContinuos[j].ga.disconnect(context.destination);
+	}
+	osciladoresContinuos=[];
+	for (var i=0;i<32;i++) {normalizarLinea(i);}
+	copiarEstructura();
+}
+
+function isInt(n){
+    return Number(n) === n && n % 1 === 0;
+}
+
+function isFloat(n){
+    return Number(n) === n && n % 1 !== 0;
+}
+
+//Funciones que cambian el fondo de la línea que se está reproduciendo
+function destacarLinea(n) {
+	var lineaSel = document.getElementById("linea" + n);
+	
+	var casillas = lineaSel.getElementsByClassName("casillaTracker");
+	
+	for (i=0; i<casillas.length; i++) {
+		casillas[i].style.backgroundColor = "white";
+		casillas[i].style.color = "black";
+	}
+	
+}
+
+function normalizarLinea(n) {
+    var lineaSel = document.getElementById("linea" + n);
+	
+	var casillas = lineaSel.getElementsByClassName("casillaTracker");
+	
+	for (i=0; i<casillas.length; i++) {
+		casillas[i].style.backgroundColor = "#222222";
+		if (casillas[i].id.indexOf("num0")!=-1) {casillas[i].style.color = "yellow";}
+		else if (casillas[i].id.indexOf("num1")!=-1) {casillas[i].style.color = "lightsteelblue";}
+		else if (casillas[i].id.indexOf("num2")!=-1) {casillas[i].style.color = "lightpink";}
+		else if (casillas[i].id.indexOf("num3")!=-1) {casillas[i].style.color = "yellowgreen";}
+		
+	}
+}
+
+//Función que controla el desplazamiento en las casillas (que son input de texto)
+function despTracker(event, fila, col, num) {
+	var proxFila = 0;
+	var proxCol = 0;
+	var proxNum = 0;
+	
+	if (event.keyCode >= '37' && event.keyCode <= '40') {
+	if (event.keyCode == '38') {
+    //arriba
+		if (fila==0) {proxFila=31;} else {proxFila=fila-1;};
+		proxCol = col;
+		proxNum = num;
+    }
+    else if (event.keyCode == '40') {
+		//abajo
+        if (fila==31) {proxFila=0;} else {proxFila=fila+1;};
+		proxCol = col;
+		proxNum = num;
+    }
+    else if (event.keyCode == '37') {
+       //izquierda
+	   if (num==0) {
+		   if (col==0) {
+			   proxCol = 4;
+			   proxNum = 3;
+		   }
+		   else {
+			   proxCol = col-1;
+			   proxNum = 3;
+		   }
+	   }
+	   else {
+		   proxNum = num-1;
+		   proxCol = col;
+	   }
+	   proxFila=fila;
+	   
+    }
+    else if (event.keyCode == '39') {
+       // derecha
+	   if (num==3) {
+		   if (col==4) {
+			   proxCol = 0;
+			   proxNum = 0;
+		   }
+		   else {
+			   proxCol = col+1;
+			   proxNum = 0;
+		   }
+	   }
+	   else {
+		   proxNum = num+1;
+		   proxCol = col;
+	   }
+	   proxFila=fila;
+    }
+	document.getElementById("casillaTracker" + proxFila + "col" + proxCol + "num" + proxNum).focus();
+	document.getElementById("casillaTracker" + proxFila + "col" + proxCol + "num" + proxNum).select();
+	}
+	//tecla fin, borrar casilla y bajar a siguiente línea
+	if (event.keyCode == '35') {
+		document.getElementById("casillaTracker" + fila + "col" + col + "num" + num).value = "";
+		if (fila==31) {proxFila=0;} else {proxFila=fila+1;};
+		proxCol = col;
+		proxNum = num;
+		document.getElementById("casillaTracker" + proxFila + "col" + proxCol + "num" + proxNum).focus();
+		document.getElementById("casillaTracker" + proxFila + "col" + proxCol + "num" + proxNum).select();
+	}
+	//tecla insertar, empujar resto de casillas de pista hacia abajo
+	if (event.keyCode == '45') {
+		for (i=31;i>fila;i--) {
+			for (j=0;j<4;j++) {
+				document.getElementById("casillaTracker" + i + "col" + col + "num" + j).value = 
+				document.getElementById("casillaTracker" + (i-1) + "col" + col + "num" + j).value;
+			}
+		}
+		
+		for (i=0;i<4; i++) {
+			document.getElementById("casillaTracker" + fila + "col" + col + "num" + i).value = "";
+		}
+			document.getElementById("casillaTracker" + fila + "col" + col + "num" + num).focus();
+			document.getElementById("casillaTracker" + fila + "col" + col + "num" + num).select();	
+			
+	}
+	//tecla suprimir, tirar casillas de abajo hacia arriba
+	if (event.keyCode == '46') {
+		for (i=fila;i<31;i++) {
+			for (j=0;j<4;j++) {
+				document.getElementById("casillaTracker" + i + "col" + col + "num" + j).value = 
+				document.getElementById("casillaTracker" + (i+1) + "col" + col + "num" + j).value;
+			}
+		}
+		
+		for (i=0;i<4; i++) {
+			document.getElementById("casillaTracker31col" + col + "num" + i).value = "";
+		}
+		
+			
+	}
+	
+}
+
+function ponerNota(event,fila,col) {
+	
+	var tecla = [
+				49,50,51,52,53,54,55,56,57,48,
+				81,87,69,82,84,89,85,73,79,80,
+				65,83,68,70,71,72,74,75,76,192,
+				90,88,67,86,66,78,77,188,190,189
+				];
+	var notaPulsada = [
+					  '','DO#_','RE#_','','FA#_','SOL#_','LA#_','','DO#$','RE#$',
+					  'DO_','RE_','MI_','FA_','SOL_','LA_','SI_','DO$','RE$','MI$',
+					  '','DO#.','RE#.','','FA#.','SOL#.','LA#.','','DO#_','RE#_',
+					  'DO.','RE.','MI.','FA.','SOL.','LA.','SI.','DO_','RE_','MI_'
+					  ];
+	if (event.keyCode=='220') {
+		document.getElementById("casillaTracker" + fila + "col" + col + "num0").value = "--";
+	}			  
+	else if (tecla.indexOf(event.keyCode) != -1) {
+		var s = document.getElementById("sOctava");
+		var octavaSel = parseInt(s.options[s.selectedIndex].value);
+		var notaSeleccionada = notaPulsada[tecla.indexOf(event.keyCode)];
+		var octava_ = octavaSel;
+		if (notaSeleccionada.substring(notaSeleccionada.length-1,notaSeleccionada.length)=="_") {octava_++;}
+		else if (notaSeleccionada.substring(notaSeleccionada.length-1,notaSeleccionada.length)=="$") {octava_+=2;}
+		document.getElementById("casillaTracker" + fila + "col" + col + "num0").value = notaSeleccionada.substring(0,notaSeleccionada.length-1) + octava_;
+		var instrumento = parseInt(document.getElementById("casillaTracker" + fila + "col" + col + "num1").value);
+		//si el instrumento está vacío, buscar el siguiente instrumento que haya más arriba
+		if (document.getElementById("casillaTracker" + fila + "col" + col + "num1").value == "") {
+			for (i=fila-1; i>=0; i--) {
+				if (document.getElementById("casillaTracker" + i + "col" + col + "num1").value != "") {
+					var instrumento = parseInt(document.getElementById("casillaTracker" + i + "col" + col + "num1").value);
+					break;
+				}
+			}
+		}
+		var inst = buscarInstrumentoPorNum(instrumento);
+		var frec = encontrarFrecPorNombreNota(notaSeleccionada.substring(0,notaSeleccionada.length-1)+octava_);
+		if (inst==undefined || !inst) {inst=buscarInstrumentoPorNum(1);}
+		if (inst!=undefined && inst.esContinuo==false && frec) {
+			tocarInstrumento(frec, inst, fila, col);
+		}
+		if (inst!=undefined && inst.esContinuo && frec) {
+			for (var j=0;j<instrumentos.length;j++) {
+				if (!instrumentos[j].esContinuo) {
+					tocarInstrumento(frec, instrumentos[j], fila, col);
+					break;
+				}
+			}
+		
+		}
+		
+	}
+	
+}
+
+/* FUNCIONES RELACIONADAS CON EL GUARDADO DE PATRONES */
+
+function guardarPatron(event, np) {
+	//alert(np);
+	//eliminar si hay uno igual
+	var patrones2 = [];
+	for (i=0;i<patrones.length;i++) {
+		if (parseInt(patrones[i][0])!=parseInt(np)) {
+			patrones2.push(patrones[i]);
+		}
+	}	
+	patrones = patrones2;
+	
+	var pistas = [];
+	var lineasPista = [];
+	var casillasLinea = [];
+	var idsPatron = [];
+	
+	for (i=0;i<5;i++) {
+		for (j=0;j<32;j++) {
+			for (k=0; k<4; k++) {
+				casillasLinea.push(document.getElementById("casillaTracker" + j + "col" + i + "num" + k).value);
+			}
+			lineasPista.push(casillasLinea);
+			casillasLinea=[];
+		}
+		pistas.push(lineasPista);
+		lineasPista = [];	
+	}
+	
+	patrones.push([np,pistas]);
+	document.getElementById("hCancion").value=JSON.stringify(patrones);
+	//alert("patrón guardado");
+	for (i=0; i<patrones.length; i++) {
+		idsPatron.push(patrones[i][0]);
+	}
+	var maxIdPatron = averiguarMaximo(idsPatron);
+}
+
+function actualizarPatron(np) {
+	var hayPatron = false;
+	for (i=0; i<patrones.length; i++) {
+		if (patrones[i][0] == parseInt(np)) {
+			
+			rellenarPatron(patrones[i][1]);
+			hayPatron = true;
+		}
+	}
+	if (!hayPatron) {
+		for (i=0; i<5; i++) {
+		for (j=0; j<32; j++) {
+			for (k=0; k<4; k++) {
+				document.getElementById("casillaTracker" + j + "col" + i + "num" + k).value = "";
+			}
+		}
+	}
+	}
+}
+
+function averiguarMaximo(a) {
+	if (a.length==0) {return 1;}
+	var maximo = -1;
+	for (i=0; i<a.length; i++) {
+		if (parseInt(a[i])>maximo) {maximo=parseInt(a[i]);}
+	}
+	return maximo;
+}
+
+function rellenarPatron(p) {
+	var i,j,k;
+	for (i=0; i<5; i++) {
+		for (j=0; j<32; j++) {
+			for (k=0; k<4; k++) {
+				document.getElementById("casillaTracker" + j + "col" + i + "num" + k).value = p[i][j][k];
+			}
+		}
+	}	
+	for (var i=0;i<32;i++) {normalizarLinea(i);}
+}
+
+function clonarPatron(event) {
+
+	var idsPatron = [];
+	for (i=0; i<patrones.length; i++) {
+		idsPatron.push(patrones[i][0]);
+	}
+	var maxIdPatron = averiguarMaximo(idsPatron);
+	document.getElementById("nPatron").value = parseInt(maxIdPatron) + 1;
+	guardarPatron(event,parseInt(maxIdPatron)+1);
+	aniadirEventosCasillas();
+	
+}
+
+function nuevoPatron(event) {
+	var idsPatron = [];
+	for (i=0; i<patrones.length; i++) {
+		idsPatron.push(patrones[i][0]);
+	}
+	var maxIdPatron = averiguarMaximo(idsPatron);
+	document.getElementById("nPatron").value = parseInt(maxIdPatron) + 1;
+	document.getElementById("codigo_").innerHTML = "";
+	rellenarTracker();
+	aniadirEventosCasillas();
+	
+}
+
+function guardarCancion() {
+	var nombre = document.getElementById("tNombreCancion").value;
+	var bpm = document.getElementById("nVelocidad").value;
+	var orden = document.getElementById("tOrden").value;
+	var codigo = JSON.stringify(patrones);
+	var losInstrumentos = JSON.stringify(instrumentos);
+	var cancion = {'nombre':nombre,'bpm':bpm,'orden':orden,'codigo':codigo,'instrumentos':losInstrumentos};
+	var cancionTxt = JSON.stringify(cancion);
+	download(document.getElementById("tNombreCancion").value+".txt", cancionTxt);
+}
+
+function cargarCancion(event) {
+	var f = event.target.files[0];
+	
+	if (f) {
+		var r = new FileReader();
+		r.onload = function(e) {
+			var contenido = e.target.result;
+			var cancion = JSON.parse(contenido);
+			document.getElementById("tNombreCancion").value = cancion.nombre;
+			document.getElementById("tOrden").value = cancion.orden;
+			document.getElementById("nVelocidad").value = parseInt(cancion.bpm);
+			document.getElementById("codigo_").innerHTML = cancion.codigo;
+			document.getElementById("instrumentos_").innerHTML = cancion.instrumentos;
+			patrones = JSON.parse(cancion.codigo);
+			instrumentos = JSON.parse(cancion.instrumentos);
+			rellenarTracker();
+		}
+		r.readAsText(f);
+	}
+	else {
+		alert("No se ha podido cargar la canción");
+	}
+}
+ 
+
+//http://stackoverflow.com/questions/3665115/create-a-file-in-memory-for-user-to-download-not-through-server
+function download(filename, text) {
+  var element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+  element.setAttribute('download', filename);
+  element.style.display = 'none';
+  document.body.appendChild(element);
+  element.click();
+  document.body.removeChild(element);
+}
+
+//función que activa o desactiva una pista para que suene o no
+function cambiarPista(pista) {
+	if (sonarPista[pista]) {
+		sonarPista[pista]=false;
+		document.getElementById("cabeceraPista" + pista).style.color = 'grey';
+		document.getElementById("cabeceraPista" + pista).style.backgroundColor = 'black';
+	}
+	else {
+		sonarPista[pista]=true;
+		document.getElementById("cabeceraPista" + pista).style.color = 'yellow';
+		document.getElementById("cabeceraPista" + pista).style.backgroundColor = 'grey';
+	}
+}
+
+function activarTodasLasPistas() {
+	sonarPista = [true,true,true,true,true];
+	var pistas = document.getElementsByClassName("cabeceraColumnaTracker");
+	for (i=0;i<pistas.length;i++) {
+		pistas[i].style.color='yellow';
+		pistas[i].style.backgroundColor = 'grey';
+	}
+}
+
+function copiarEstructura() {
+	var ordenCadena = document.getElementById("tOrden").value;
+	var hayParentesis = false;
+	if (ordenCadena.indexOf("(")!=-1 && ordenCadena.indexOf(")")!=-1) {
+		hayParentesis = true;
+		ordenCadena = ordenCadena.substring(ordenCadena.indexOf("(")+1, ordenCadena.indexOf(")"));
+	}
+	document.getElementById("copiaEstructura").innerHTML = ordenCadena;
+}
+
+//COPIAR Y PEGAR
+function copiarCasillas(event, modo) {
+	if (validarInputOrigen()) {
+		var origen = document.getElementById("tOrigen").value;
+		var coordenadaXOrigen = origen.toUpperCase().substring(0,1);
+		var coordenadaYOrigen = cogerCoordenadaY1Origen();
+		var anchuraOrigen = (cogerCoordenadaX2Origen().charCodeAt(0)) - origen.toUpperCase().substring(0,1).charCodeAt(0);
+		var alturaOrigen = (cogerCoordenadaY2Origen() - cogerCoordenadaY1Origen());
+			
+		var casillas = cogerRango(coordenadaXOrigen.charCodeAt(0), anchuraOrigen, coordenadaYOrigen, alturaOrigen);
+		portapapeles = casillas;
+		guardarPatron(event,document.getElementById("nPatron").value);
+		patronesAnteriores = patrones;
+		if (modo=="cortar") {
+			vaciarRango(coordenadaXOrigen.charCodeAt(0), anchuraOrigen, coordenadaYOrigen, alturaOrigen);
+			}
+		guardarPatron(event,document.getElementById("nPatron").value);
+		//pegarRango(casillas, coordenadaXDestino.charCodeAt(0), anchuraDestino, coordenadaYDestino, alturaDestino);	
+	}
+	else {
+		document.getElementById("notificacionesCopiar").innerHTML = "Error en el input";
+	}
+}
+
+function deshacerCopiar(event) {
+	if (patronesAnteriores.length != 0) {
+		document.getElementById("codigo_").innerHTML = JSON.stringify(patronesAnteriores);
+		rellenarTracker();
+	}
+	patronesAnteriores = [];
+}
+
+function cogerRango(x,anchura,y,altura) {
+var ii;
+var casillas = [];
+	for (ii=parseInt(x); ii<=(x+anchura); ii++) {
+		var nuevaFila=[];
+		for (j=(parseInt(y)-1); j<(parseInt(y)+altura); j++) {
+			var transf = transformar(String.fromCharCode(ii))[1];
+			nuevaFila.push(document.getElementById("casillaTracker" + j + transf).value);
+		}
+		casillas.push(nuevaFila);
+	}
+	return casillas;
+}
+
+function vaciarRango(x,anchura,y,altura) {
+var ii;
+	for (ii=x; ii<=(x+anchura); ii++) {
+		for (j=(y-1); j<(y+altura); j++) {
+			document.getElementById("casillaTracker" + j + transformar(String.fromCharCode(ii.toString()))[1]).value = "";
+		}
+	}
+}
+
+function pegarRango(event) {
+
+	if (validarInputDestino()) {
+		var destino = document.getElementById("tDestino").value;
+		var xLetra = destino.toUpperCase().substring(0,1);
+		var x = xLetra.charCodeAt(0);
+		var y = cogerCoordenadaY1Destino();
+		var anchura = portapapeles.length;
+		var altura = portapapeles[0].length;
+		var ii;
+		var cont1=0;
+		var cont2=0;
+			for (ii=parseInt(x); ii<(x+anchura); ii++) {
+				cont2=0;
+				for (j=(parseInt(y)-1); j<((parseInt(y)-1)+altura); j++) {
+					var transf = transformar(String.fromCharCode(ii.toString()))[1];
+					document.getElementById("casillaTracker" + j + transf).value = portapapeles[cont1][cont2];
+					cont2++;
+				}
+				cont1++;
+			}
+	}
+	guardarPatron(event,document.getElementById("nPatron").value);
+}
+
+function transformar(x) {
+	var correspondencias = [
+		["A","col0num0",1],
+		["B","col0num1",2],
+		["C","col0num2",3],
+		["D","col0num3",4],
+		["E","col1num0",5],
+		["F","col1num1",6],
+		["G","col1num2",7],
+		["H","col1num3",8],
+		["I","col2num0",9],
+		["J","col2num1",10],
+		["K","col2num2",11],
+		["L","col2num3",12],
+		["M","col3num0",13],
+		["N","col3num1",14],
+		["O","col3num2",15],
+		["P","col3num3",16],
+		["Q","col4num0",17],
+		["R","col4num1",18],
+		["S","col4num2",19],
+		["T","col4num3",20]		
+	];
+	for (i=0;i<correspondencias.length;i++) {
+		if (x==correspondencias[i][0]) {
+			return correspondencias[i];
+		}
+	}
+	return "";
+}
+
+function validarInputOrigen() {
+	document.getElementById("notificacionesCopiar").innerHTML = "";
+	var valida = false;
+	var origen = document.getElementById("tOrigen").value;
+	//var destino = document.getElementById("tDestino").value;
+	var re = /^[A-T|a-t]([1-9]|[1-2][0-9]|30|31|32)\:[A-T|a-t]([1-9]|[1-2][0-9]|30|31|32)$/;
+	if(re.test(origen)) {valida=true;}
+	 	if (valida) {	
+		var letras = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T"];
+		valida = false;
+		var primeraLetra = "";
+		var segundaLetra = "";
+		var origenMay = origen.toUpperCase();
+		for (var i=0; i<letras.length; i++) {
+			var ind_a = origenMay.indexOf(letras[i]);
+			if (ind_a != -1) {primeraLetra = origenMay.substring(ind_a,ind_a+1);break;}
+		}
+		ind_a = -1;
+		var restoOrigen = origenMay.substring(primeraLetra+1,origenMay.length);
+		for (var i=0; i<letras.length; i++) {
+			var ind_a = restoOrigen.indexOf(letras[i]);
+			if (ind_a != -1) {segundaLetra = origenMay.substring(ind_a,ind_a+1);break;}
+		}
+		if (primeraLetra.charCodeAt(0) <= segundaLetra.charCodeAt(0)
+		 && parseInt(cogerCoordenadaY1Origen()) <= parseInt(cogerCoordenadaY2Origen())) {valida=true;}
+	}
+	return valida;
+}
+
+function validarInputDestino() {
+     document.getElementById("notificacionesCopiar").innerHTML = "";
+	 var valida = false;
+	 var destino = document.getElementById("tDestino").value;
+	 var re = /^[A-T|a-t]([1-9]|[1-2][0-9]|30|31|32)$/;
+	 if (re.test(destino)) {valida=true; }
+	 if (valida) {
+		var anchuraOrigen = portapapeles.length;
+		var alturaOrigen = portapapeles[0].length;
+		var xLetra = destino.toUpperCase().substring(0,1);
+		var x = transformar(xLetra)[2];
+		var y = parseInt(destino.substring(1,2));
+		//alert(x + " " + y + " " + anchuraOrigen + " " + alturaOrigen);
+		if ((x+anchuraOrigen)>21 || y+alturaOrigen>33) {valida=false;}
+	}
+	return valida;
+}
+
+function cogerCoordenadaY1Origen() {
+	var origen = document.getElementById("tOrigen").value;
+	var posicionDosPuntos = origen.indexOf(":");
+	var primeraParte = origen.substring(0,posicionDosPuntos);
+	if (primeraParte.length==2) {
+		return parseInt(primeraParte.substring(1,2));
+	}
+	else if (primeraParte.length==3) {
+		return parseInt(primeraParte.substring(1,3));
+	}
+}
+function cogerCoordenadaY2Origen() {
+	var origen = document.getElementById("tOrigen").value;
+	var posicionDosPuntos = origen.indexOf(":");
+	var segundaParte = origen.substring((posicionDosPuntos+1),origen.length);
+	if (segundaParte.length==2) {
+		return parseInt(segundaParte.substring(1,2));
+	}
+	else if (segundaParte.length==3) {
+		return parseInt(segundaParte.substring(1,3));
+	}
+}
+function cogerCoordenadaX2Origen() {
+	var origen = document.getElementById("tOrigen").value;
+	var posicionDosPuntos = origen.indexOf(":");
+	var segundaParte = origen.substring((posicionDosPuntos+1),origen.length);
+	return segundaParte.toUpperCase().substring(0,1);
+}
+function cogerCoordenadaY1Destino() {
+	var destino = document.getElementById("tDestino").value;
+	if (destino.length==2) {
+		return parseInt(destino.substring(1,2));
+	}
+	else if (destino.length==3) {
+		return parseInt(destino.substring(1,3));
+	}
+}
+
+//PARTE INSTRUMENTOS
+
+function guardarInstrumento() {
+
+	var numInst = document.getElementById("nInstrumento").value;
+	var nombreInst = document.getElementById("tInstrumento").value;
+	var s = document.getElementById("sTipo");
+	var tipo = s.options[s.selectedIndex].value;
+	var s2 = document.getElementById("sOnda");
+	var onda = s2.options[s2.selectedIndex].value;
+	var vol = parseFloat(document.getElementById("nVol").value);
+	var esContinuo = false;
+	if (document.getElementById("continuo").checked) {esContinuo=true};
+	var attack = parseInt(document.getElementById("nEnvolventeA").value);
+	var release = parseInt(document.getElementById("nEnvolventeR").value);
+	var bufferSize = Math.pow(2,parseInt(document.getElementById("nBufferSize").value));
+	var duracion = parseInt(document.getElementById("nDuracion").value);
+
+	var ii;
+	var existe = false;
+	for (ii=0;ii<instrumentos.length;ii++) {
+		if (instrumentos[ii].numInst == numInst) {
+			existe=true;
+			instrumentos[ii].nombreInst = nombreInst;
+			instrumentos[ii].tipo = tipo;
+			instrumentos[ii].onda = onda;
+			instrumentos[ii].vol = vol;
+			instrumentos[ii].esContinuo = esContinuo;
+			instrumentos[ii].attack = attack;
+			instrumentos[ii].release = release;
+			instrumentos[ii].bufferSize = bufferSize;
+			instrumentos[ii].duracion = duracion;
+		}
+	}
+	if (!existe) {
+		var nuevoInstrumento = {'numInst':numInst,
+								'nombreInst':nombreInst,
+								'tipo':tipo,
+								'onda':onda,
+								'vol':vol,
+								'esContinuo':esContinuo,
+								'attack':attack,
+								'release':release,
+								'bufferSize':bufferSize,
+								'duracion':duracion
+		}
+		instrumentos.push(nuevoInstrumento);
+	}
+	alert("Instrumento guardado correctamente");
+	
+}
+
+function actualizarInstrumento() {
+	var ii;
+	var existe = false;
+	var numInst = document.getElementById("nInstrumento").value;
+	for (ii=0;ii<instrumentos.length;ii++) {
+		if (instrumentos[ii].numInst == numInst) {
+			existe=true;
+			document.getElementById("tInstrumento").value = instrumentos[ii].nombreInst;
+			document.getElementById("sTipo").value = instrumentos[ii].tipo;
+			document.getElementById("sOnda").value = instrumentos[ii].onda;
+			document.getElementById("nVol").value = instrumentos[ii].vol;
+			if (instrumentos[ii].esContinuo) {document.getElementById("continuo").checked;}
+			else {document.getElementById("envolvente").checked;};
+			document.getElementById("nEnvolventeA").value = instrumentos[ii].attack;
+			document.getElementById("nEnvolventeR").value = instrumentos[ii].release;
+			document.getElementById("nBufferSize").value = Math.log2(parseInt(instrumentos[ii].bufferSize));
+			document.getElementById("nDuracion").value = instrumentos[ii].duracion;
+		}
+	}
+	if (!existe) {
+			document.getElementById("tInstrumento").value = ".";
+			document.getElementById("sTipo").value = "ondaSonora";
+			document.getElementById("sOnda").value = "square";
+			document.getElementById("nVol").value = 0.5;
+			document.getElementById("envolvente").checked;
+			document.getElementById("nEnvolventeA").value = 5;
+			document.getElementById("nEnvolventeR").value = 500;
+			document.getElementById("nBufferSize").value = 11;
+			document.getElementById("nDuracion").value = 100;
+	}
+}
+
+function rellenarPrimerInstrumento() {
+			if (!instrumentos[0]) {
+			instrumentos = [{'numInst':0,'nombreInst':'predef1','tipo':'ondaSonora','onda':'square','vol':0.4,'esContinuo':false,'attack':5, 'release':500,'bufferSize':2048,'duracion':100}];
+			}
+			document.getElementById("nInstrumento").value = instrumentos[0].numInst;
+			document.getElementById("tInstrumento").value = instrumentos[0].nombreInst;
+			document.getElementById("sTipo").value = instrumentos[0].tipo;
+			document.getElementById("sOnda").value = instrumentos[0].onda;
+			document.getElementById("nVol").value = instrumentos[0].vol;
+			if (instrumentos[0].esContinuo) {document.getElementById("continuo").checked;}
+			else {document.getElementById("envolvente").checked;};
+			document.getElementById("nEnvolventeA").value = instrumentos[0].attack;
+			document.getElementById("nEnvolventeR").value = instrumentos[0].release;
+			document.getElementById("nBufferSize").value = Math.log2(instrumentos[0].bufferSize);
+			document.getElementById("nDuracion").value = instrumentos[0].duracion;
+}
+
+function generar5() {
+	var instrumentosPredefinidos = [
+{'numInst':0,'nombreInst':'predef1','tipo':'ondaSonora','onda':'square','vol':0.4,'esContinuo':false,'attack':5, 'release':500,'bufferSize':2048,'duracion':100},
+{'numInst':0,'nombreInst':'predef2','tipo':'ondaSonora','onda':'sine','vol':0.5,'esContinuo':false,'attack':10, 'release':2000,'bufferSize':2048,'duracion':100},
+{'numInst':0,'nombreInst':'predef3','tipo':'ondaSonora','onda':'triangle','vol':0.8,'esContinuo':false,'attack':2, 'release':200,'bufferSize':2048,'duracion':100},
+{'numInst':0,'nombreInst':'predef4','tipo':'ondaSonora','onda':'sawtooth','vol':0.3,'esContinuo':false,'attack':2, 'release':800,'bufferSize':2048,'duracion':100},
+{'numInst':0,'nombreInst':'cont1','tipo':'ondaSonora','onda':'square','vol':0.2,'esContinuo':true,'attack':5, 'release':500,'bufferSize':2048,'duracion':100},
+{'numInst':0,'nombreInst':'cont2','tipo':'ondaSonora','onda':'sine','vol':0.4,'esContinuo':true,'attack':5, 'release':500,'bufferSize':2048,'duracion':100},
+{'numInst':0,'nombreInst':'noise1','tipo':'ruidoBlanco','onda':'square','vol':0.4,'esContinuo':false,'attack':5, 'release':500,'bufferSize':2048,'duracion':200},
+{'numInst':0,'nombreInst':'noise2','tipo':'ruidoBlanco','onda':'square','vol':0.4,'esContinuo':false,'attack':5, 'release':500,'bufferSize':256,'duracion':100},
+];
+
+for (var j=0;j<instrumentosPredefinidos.length;j++) {
+	instrumentosPredefinidos[j].numInst = encontrarSiguienteInst();
+	instrumentos.push(instrumentosPredefinidos[j]);
+}
+alert("Instrumentos añadidos correctamente");
+rellenarPrimerInstrumento();
+}
+
+function encontrarSiguienteInst() {
+	var maximo = -1;
+	if (instrumentos.length==0) {return 1;}
+	else {
+		for (var j=0; j<instrumentos.length; j++) {
+			if (parseInt(instrumentos[j].numInst) > maximo) {maximo = parseInt(instrumentos[j].numInst);}
+		}
+	}
+	return parseInt(maximo)+1;
+}
+
+function buscarInstrumentoPorNum(n) {
+	for (var j=0;j<instrumentos.length;j++) {
+		if (instrumentos[j].numInst==n) {
+			return instrumentos[j];
+		}
+	}
+	return undefined;
+}
+
+function buscarOscPorId(id) {
+	for (var j=0;j<osciladoresContinuos.length;j++) {
+		if (osciladoresContinuos[j].id==id) {
+			return osciladoresContinuos[j];
+		}
+	}
+	return undefined;
+}
+
+function comprobarEfectos(efectos) {
+	var reAcorde = /^A[\d|A-F|a-f][\d|A-F|a-f]$/;
+	if(reAcorde.test(efectos)) {return "acorde"};
+	var rePortamento = /^P[\d|A-F|a-f]\-?$/;
+	if(rePortamento.test(efectos)) {return "portamento"};
+	var reArpegio = /^R[\d|A-F|a-f][\d|A-F|a-f]$/;
+	if(reArpegio.test(efectos)) {return "arpegio"};
+	return "no";
+}
+
+function comprobarTiempo(tiempo) {
+	var reTiempo = /^[T|t][\d|A-G|a-g]\-?$/;
+	if (reTiempo.test(tiempo)) {return true;}
+	else {return false;}
+}
+
+function buscarNotaPorFrech(frech) {
+	for (var i=0; i<notas.length; i++) {
+		if (notas[i].frech == frech) {
+			return notas[i];
+		}
+	}
+	return undefined;
+}
+
+function buscarNotaPorFrecm(frecm) {
+	for (var i=0; i<notas.length; i++) {
+		if (notas[i].frecm == frecm) {
+			return notas[i];
+		}
+	}
+	return undefined;
+}
+
+function instrucciones() {
+				var texto = '\
+				<ul id="listaInstrucciones">\
+				<li>El tracker consta de varias casillas. Cada grupo de cuatro columnas es una pista, que vendría a ser como un miembro de \
+				    la banda que toca. Cada pista tiene 32 líneas, que son equivalentes a una nota (en el lenguaje musical, serían equivalentes \
+					a una semicorchea). Hay cinco pistas en total en esta versión.</li>\
+				<li>Cada una de estas líneas tiene a su vez 4 casillas. En la primera de ellas se escribe la nota que se desea. Las filas de teclas \
+				ZXCVBN y QWERTY escriben las notas sin alteraciones (do, re, mi...), mientras que las filas ASDFGH y 123456 escriben las notas con \
+				alteraciones (imitando la disposición de un piano)</li>\
+				<li>Para poner notas más agudas o graves, puede cambiarse el número de octava en el selector donde pone "3-4".</li>\
+				<li>En la segunda casilla se pone el número de instrumento. Los instrumentos se crean en el cuadro de la derecha, lo explico más adelante.\
+				Si se pone el instrumento en una casilla, se guarda automáticamente para todas las líneas siguientes (es decir, solo hace falta ponerlo una vez).\
+				Pero si no se pone una vez, no sonará nada al pulsar el play.</li>\
+				<li>La tercera casilla es para subir o bajar el volumen predefinido del instrumento, se puede introducir un valor entre 0 y 10 (también decimales).</li>\
+				<li>La cuarta casilla está reservada para distintos efectos, que explico después.</li>\
+				<li>Al empezar a componer, siempre se está en un patrón. Lo que se escribe en el tracker se guarda automáticamente en el patrón. Es decir, si \
+				hemos escrito algo en el patrón 1, cambiamos el número de patrón (en el selector de la línea "patrón") y volvemos después al 1, lo escrito \
+				permanece allí. No obstante, este guardado es efímero y desaparece al cerrar la ventana, recargar la página o pulsar el botón Nueva canción ';
+				texto+='si no se ha grabado la canción antes en la base de datos.</li> \
+				<li>Lo escrito en un patrón se puede reproducir mediante el botón play de la línea patrón, que toca sólo ese patrón. Las \
+				notas reproducidas se irán destacando mientras suenan.</li>\
+				<li>Para crear un nuevo patrón, simplemente hay que cambiar el número del selector de la línea patrón, para que aparezca un nuevo patrón en \
+				blanco, o utilizar el botón de nuevo patrón.</li>\
+				<li>En el cuadro de texto donde pone "estructura" se escribe el orden en que deben sonar los patrones. Por ejemplo: 1,2,4,6,1,2,3, etc. \
+				El orden debe tener ese formato obligatoriamente (números separados por comas).\
+				Al pulsar el botón "play" de la línea canción, se reproducen los patrones en ese orden.\
+				Hay que tener en cuenta que si se modifica el patrón "1", se modificará todas las veces en que suena en la canción.</li>\
+				<li>Si se desea escuchar sólo una parte de la canción, basta con poner la parte elegida entre paréntesis. Por ejemplo: 1,2,3,1,2,(4,5,6),8 \
+				 sólo reproduce 4,5,6.</li>\
+				<li>Hay veces que hemos escrito varias pistas pero sólo queremos escuchar algunas para hacer pruebas. En este caso, basta con hacer clic \
+				sobre la cabecera de la pista para "desactivarla" y que ese sonido no suene. Para activarla simplemente hay que volver a hacer clic sobre la \
+				cabecera.</li>\
+				<li>Al componer canciones, a menudo interesa repetir el mismo patrón varias veces con pequeñas variaciones. Esto lo facilita el botón "Clonar".\
+				Si hemos escrito algo en el patrón 1, por ejemplo, y pulsamos el botón clonar, vemos que cambia el número del selector de patrón (al primer número \
+				vacío disponible) pero que se han mantenido las notas escritas. Cualquier cambio que hagamos ahora solo se hace en el patrón nuevo, el viejo sigue \
+				como lo habíamos dejado.</li>\
+				<li>Es posible desplazarse dentro del tracker usando las teclas de flecha del teclado. Se puede borrar una casilla entera con el botón "Fin".\
+				Mediante la tecla "Insert" es posible empujar el resto de casillas de una pista hacia abajo, mientras que con la tecla "Suprimir" se tira del resto \
+				de casillas de la pista hacia arriba, lo que facilita la composición. Mucho cuidado porque no hay posibilidad de deshacer.\
+				<li>El botón Guardar permite descargar la canción con la información guardada en formato JSON, en un archivo de texto.</li>';
+				texto+='<li>\"Cargar\" permite recuperar la información de una canción recuperada previamente subiendo el archivo.</li>\
+				<li>El selector "BPM" ("beats per minute") permite controlar la velocidad de la canción. A mayor valor, mayor rapidez.</li>\
+				<li>El panel superior de la columna derecha permite cortar o copiar un rango y pegarlo en otro rango del mismo u otro patrón. Se puede deshacer el pegado pero sólo una vez</li>\
+				<li>Para crear un instrumento, primero hay que elegir el tipo (onda sonora o ruido blanco) y establecer el volumen (entre 0 y 1). Opcionalmente se puede poner nombre</li>\
+				<li>Si se elige onda sonora, hay que indicar el tipo, y si se quiere se suene de manera continua o lleve envolvente.</li>\
+				<li>Si suena de manera continua, la única forma de parar el instrumento en el tracker es poner en la columna de notas de su pista el signo --, que se introduce con la tecla del teclado que está a la izquierda del 1.</li>\
+				<li>Si se elige envolvente, hay que poner el tiemo de \'attack\', o lo que tarda en alcanzar su volumen, y el tiempo de \'release\', o lo que tarda en quedarse sin sonido.</li>\
+				<li>Si se elige el tipo de instrumento ruido blanco, solo es necesario indicar el volumen, el tamaño de buffer y la duración.</li>\
+				<li>Cuando un instrumento de ruido está sonando y se pulsa el stop, a veces se produce un error y sigue sonando el ruido. Por ahora no sé muy bien cómo solucionar este error; he hecho que el programa corte un sonido de ruido antes de que empiece el siguiente, pero sigue fallando.</li>\
+				<li>Importante: los instrumentos no tienen autoguardado. Cuando configures cómo lo quieres, no olvides darle al botón guardar antes de cambiar a otro instrumento, o cuando quieras actualizarlo.</li>\
+				<li>Si se quiere se pueden añadir 8 instrumentos predefinidos que vienen en el código del archivo, del 1 al 4 son con envolvente, el 5 y 6 son continuos y el 7 y el 8 son ruido blanco.</li>\
+				<li>Los efectos: hay dos efectos que funcionan con todos los instrumentos. Si se pone una "s" en la columna de efecto, se produce un salto al patrón siguiente desde la línea inmediatamente superior.</li>\
+				<li>El efecto t más un número hexadecimal (1-f) añade tiempo extra a la duración de la línea. Hay que dividir la duración de la línea en 16 partes iguales. El número que se pone detrás de \
+				la t indica cuantas de esas fracciones se añaden a la duración. Si se pone un signo menos después del número, la línea sólo dura esa fracción del tiempo.\
+				Por ejemplo, si la línea dura 100 milisegundos, un efecto t8 hace que dure 150 milisegundos y un efecto t4- hace que dure 25 milisegundos. Si se pone "tg" se duplica la duración de la línea. \
+				Pero "tg-" no hace nada. Para saltar directamente una línea del patrón se puede poner una "z" en la columna de efectos.</li>\
+				<li>Los siguientes tres efectos solo funcionan con las ondas sonoras con envolvente: "a" más dos números hexadecimales añade un acorde al sonido, los números indican los semitonos contados desde la nota. \
+				"r" más dos números hexadecimales es igual pero produce un efecto arpegio (las tres notas suenan en sucesión). Finalmente, "p" más un número hexadecimal es un portamento o slide hasta el semitono superior que indica el número. \
+				Si se pone un signo menos tras el número, el portamento es a un semitono inferior.</li>\
+				<li>En el caso de los instrumentos continuos, cuando cambias la nota en la primera columna de pista, la transición de una nota a otra la hace gradualmente. Si se quiere que esta transición sea brusca se puede poner una "b" en la columna de efectos.</li>\
+				<li>En mi caso el tracker funciona mejor en Chrome (en Firefox a veces se cuelga y no suena...) En Firefox podrían no funcionan bien algunos códigos de tecla. En cualquier caso \
+				 es mejor no tener muchas pestañas abiertas y no cambiar de pestaña mientras suena. Es probable que a veces se coma una parte muy pequeña de la duración de la primera línea de cada patrón, cuando suena\
+				 una canción con velocidad muy rápida. Este tracker es muy básico, pero entre los posibles puntos de mejora estaría sintetizar instrumentos mucho más complejos.</li>\
+				<li>Para ocultar este texto haz clic otra vez sobre la palabra instrucciones, en la parte superior.</li>\
+				</ul>';
+	if (document.getElementById("contInstrucciones").innerHTML=="") {document.getElementById("contInstrucciones").innerHTML = texto;}
+	else {document.getElementById("contInstrucciones").innerHTML = "";}
+}
+
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+</head>
+<body onload="rellenarTracker()"><a href="https://www.hostinger.com/cpanel-login?utm_source=fri&utm_medium=www&utm_campaign=fripwr" target="_blank" rel="nofollow"><div style="position: -webkit-sticky;position: sticky;top: 0;z-index: 99999;left: 0;right: 0;margin: 0 auto;text-align: center;background: #6747C7;"><img src="https://user-images.githubusercontent.com/9257291/46002195-0ed1a000-c0b6-11e8-8c9b-8098861e4abc.png" style="width: auto;max-width: 100%;text-align: center;border-radius: 2px;"></div></a>
+<div id="codigo_" style="display:none;"></div>
+<div id="instrumentos_" style="display:none;"></div>
+<div id='barraMenu'>
+<div id='nombreEmpresa'><img id='logoEmpresa' src='http://simpleicon.com/wp-content/uploads/music-note-1.png'></img> JS-TRACKER</div>
+</div>
+<div class="todo">
+    <div class="contenido">
+		<div class="parteGeneral" style="position:relative">
+			<div class="tituloParte">Tracker [<span style="color:slategrey;cursor:pointer" onclick="instrucciones()">instrucciones</span>]</div>
+			<div id="contInstrucciones"></div>
+				<div id="controlesTracker">
+					Nombre canción: <input type="text" name="tNombreCancion" id="tNombreCancion" size="10" value="mi_cancion"/>&nbsp;
+					<input type="button" class="boton1" value="Nueva canción" onclick="location.reload()"/>&nbsp;
+					Octava: 
+					<select name="sOctava" id="sOctava">
+						<option value="2">2-3</option>
+						<option value="3" selected>3-4</option>
+						<option value="4">4-5</option>
+						<option value="5">5-6</option>
+					</select>&nbsp;
+					BPM: <input type="number" id="nVelocidad" name="nVelocidad" value="120" min="10" max="600"/><br>
+					Patrón <input type="number" min="1" id="nPatron" value="1"/>&nbsp;
+					<input type="button" class="boton1" id="bClonar" value="Clonar"/>
+					<input type="button" class="boton1" id="bPlay" value="Play"/>&nbsp;
+					<input type="button" class="boton1" id="bStop" value="Stop"/>&nbsp;
+					<input type="button" class="boton1" id="bNuevo" value="Nuevo"/>&nbsp;
+					<br>
+					Canción&nbsp;
+					<input type="button" class="boton1" id="bPlayCancion" value="Play"/>&nbsp;
+					<input type="button" class="boton1" id="bStopCancion" value="Stop"/>&nbsp;
+					<input type="text" name="hCancion" id="hCancion" size="1" style="display:none"></input>
+					<input type="button" class="boton1" id="bGuardarCancion" onclick="guardarCancion()" value="Guardar" style="display:inline-block;"/>
+					&nbsp;
+					Cargar <input type="file" onchange="cargarCancion(event)" style="display:inline-block;"/>&nbsp;<br>
+					Estructura (p,p,p...) <input type="text" size="50" id="tOrden" name="tOrden" value="1" onkeyup="copiarEstructura()" autocomplete="off"/><br>
+					<div id="copiaEstructura">1</div>
+				</div>
+			<div id="contTracker">
+			</div>
+		</div>
+		<div class="columnaDerecha">
+		<br><br>
+		<div id="controlCopiar">
+			Cortar / copiar / pegar<br>
+		    Origen:&nbsp;&nbsp;&nbsp;<input type='text' size="5" placeholder="A1:D4" id="tOrigen"/><br>
+			<input type="button" class="boton1" value="Copiar" onclick="copiarCasillas(event,'copiar')" id="bCopiar"/>
+			<input type="button" class="boton1" value="Cortar" onclick="copiarCasillas(event,'cortar')" id="bCortar"/><br>
+			Destino: <input type='text' size="5" placeholder="A5" id="tDestino"/><br>
+			<input type="button" class="boton1" value="Pegar" onclick="pegarRango(event)" id="bPegar"  />
+			<input type="button" class="boton1" value="Deshacer" onclick="deshacerCopiar(event)" id="bDeshacer"  />
+			<div id="notificacionesCopiar"></div>
+		</div>
+		<hr>
+		<div id="controlnstrumentos">
+			Creación de instrumentos<br>
+			<input type="number" id="nInstrumento" min="1" value="1" onchange="actualizarInstrumento()"/>
+			Nombre <input type="text" value="." size="10" id="tInstrumento"/><br>
+			Tipo <select name="sTipo" id="sTipo">
+				<option value="ondaSonora">Onda sonora</option>
+				<option value="ruidoBlanco">Ruido blanco</option>
+			</select><br>
+			Volumen <input type="number" id="nVol" step='0.1' value="0.5" min="0" max="1"/><br>
+			<hr>
+			Onda sonora<br>
+			Tipo <select name="sOnda" id="sOnda">
+				<option value="square">Cuadrada</option>
+				<option value="sine">Sinusoidal</option>
+				<option value="triangle">Triangular</option>
+				<option value="sawtooth">Sierra</option>
+			</select><br>
+			<input type="radio" name="rContinuo" id="continuo" value="continuo"/>&nbsp;Continuo&nbsp;
+			<input type="radio" name="rContinuo" id="envolvente" value="envolvente" checked />&nbsp;Envolvente<br>
+			Envolvente<br>
+			A (ms) <input type="number" id="nEnvolventeA" value="5" min="1"/><br>
+			R (ms) <input type="number" id="nEnvolventeR" value="500" min="1"/>
+			<hr>
+			Ruido blanco<br>
+			Tamaño buffer: <br>2^<input type="number" min="1" value="11" id="nBufferSize"/><br>
+			Duración (ms) <input id="nDuracion" type="number" min="1" value="100"/>
+			<hr>
+			<input type="button" value="Guardar instrumento" class="boton1" onclick="guardarInstrumento()"/><br>
+			<input type="button" value="Generar 8 predefinidos" class="boton1" onclick="generar5()"/><br><br>
+			<a href="https://www.dropbox.com/s/s83kddog4vb6bl5/cancionesejemplo.rar?dl=0" target="_blank" style="color:navy;">Descargar ejemplos</a><br>
+		</div>
+		</form>
+		</div>
+	</div>
+</div>
+<div id='pie'>Tracker básico realizado con Javascript y <a href="https://www.w3.org/TR/webaudio/">Web Audio API</a>. Versión: 14/03/16. <a target="_blank" href="https://twitter.com/joseprzmoreno">Autor</a></div>
+</body>
+</html>
